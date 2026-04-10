@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# latexmk build directory (see build.sh)
+out/
+
+# svg package's Inkscape conversion cache (created by \includesvg)
+svg-inkscape/
+
+# Stray LaTeX intermediates if anything escapes out/
+*.aux
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.bcf-SAVE-ERROR
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.run.xml
+*.synctex.gz
+
+# Keep figures and the published reference PDF
+!figures/
+!template.pdf
