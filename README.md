@@ -19,9 +19,22 @@ The example chapters that ship with this template are not just placeholders — 
 
 The template improves whenever a student contributes back. If you find a bug, a typo, or have a workflow improvement, please open a pull request against [`siamak-haschemi/bht-thesis-template-latex`](https://github.com/siamak-haschemi/bht-thesis-template-latex) so future students benefit. And give the repo a star.
 
+## Prerequisites
+
+Most students write in Overleaf and need none of this. Install these only if you want to build the PDF locally or regenerate the example SVG diagrams from `.drawio` sources.
+
+- **Docker** — required by `build.sh`. On macOS, [OrbStack](https://orbstack.dev) is a lightweight drop-in for Docker Desktop and works out of the box; on Linux any Docker engine is fine. You do **not** need a local TeX install — TeX Live and Inkscape live inside the image `build.sh` builds.
+- **draw.io desktop** — only needed if you edit `software/drawio-svg-export/figures.drawio` and want to re-export the SVGs via `software/drawio-svg-export/export-drawio-svg.py`. The export script shells out to the `drawio` CLI that ships with the desktop app:
+
+  ```bash
+  brew install --cask drawio       # macOS
+  ```
+
+  The `drawio` binary must be on your `PATH` for the script to find it.
+
 ## Building locally
 
-You don't need a local TeX install — `build.sh` runs everything inside Docker:
+`build.sh` runs everything inside Docker — see [Prerequisites](#prerequisites):
 
 ```bash
 ./build.sh        # → out/main.pdf

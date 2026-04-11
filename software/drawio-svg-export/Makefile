@@ -1,9 +1,9 @@
-# Simple Makefile to export SVGs from figures.drawio, commit, and push.
+# Simple Makefile to export SVGs from figures.drawio into ../../figures.
 
 PY      := python3
 SCRIPT  := ./export-drawio-svg.py
 DRAWIO  := figures.drawio
 
-# Main command: export SVGs, commit, and push (automatic workflow)
+# Export changed pages to SVG. Staging/committing the result is up to you.
 svg:
 	$(PY) $(SCRIPT) $(DRAWIO)
