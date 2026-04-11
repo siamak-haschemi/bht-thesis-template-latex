@@ -1,0 +1,19 @@
+% Abkürzungsverzeichnis / List of Abbreviations
+%
+% Define each abbreviation once. Use \gls{key} in running text to print it.
+%
+%   First use:        \gls{bht}        -> Berliner Hochschule für Technik (BHT)
+%   Subsequent uses:  \gls{bht}        -> BHT
+%   Plural:           \glspl{api}      -> APIs
+%   Inside headings:  \glsentryshort{api}
+%       (use \glsentryshort in headings to avoid messing up the page numbers
+%        in the abbreviations list)
+%
+% New abbreviations: add a \newacronym{key}{SHORT}{Long form} line below.
+% The build will fail (via scripts/check-abbreviations.sh) if you use a key
+% in the text without defining it here.
+
+\newacronym{bht}{BHT}{Berliner Hochschule für Technik}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{pdf}{PDF}{Portable Document Format}
+\newacronym{svg}{SVG}{Scalable Vector Graphics}

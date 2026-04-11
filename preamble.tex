@@ -46,6 +46,19 @@
 \usepackage{hyperref}
 \hypersetup{hidelinks}
 
+% Abbreviations / Abkürzungsverzeichnis
+% Must be loaded AFTER hyperref. Definitions live in abbreviations.tex.
+\usepackage[nomain,acronym,postdot,toc,section=chapter]{glossaries-extra}
+\usepackage{glossary-mcols}
+\setabbreviationstyle[acronym]{long-short}
+\setglossarystyle{mcolindex}        % two-column layout
+\makeglossaries
+\input{abbreviations}
+
+% Localized title for the abbreviations section
+\addto\captionsngerman{\renewcommand{\acronymname}{Abkürzungsverzeichnis}}
+\addto\captionsenglish{\renewcommand{\acronymname}{List of Abbreviations}}
+
 % Other
 \usepackage{cleveref}       % Very useful when referring to stuff
 \usepackage{pdfpages}       % Needed for "table of content squares"

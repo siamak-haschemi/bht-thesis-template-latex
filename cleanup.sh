@@ -33,5 +33,13 @@ find . \
     -name '*.toc' -o \
     -name '*.run.xml' -o \
     -name '*.synctex.gz' -o \
+    -name '*.glo' -o \
+    -name '*.gls' -o \
+    -name '*.glg' -o \
+    -name '*.acn' -o \
+    -name '*.acr' -o \
+    -name '*.alg' -o \
+    -name '*.ist' -o \
+    -name '*.xdy' -o \
     -name '.DS_Store' \
   \) -type f -print -delete

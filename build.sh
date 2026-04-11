@@ -5,6 +5,8 @@ set -euo pipefail
 
 IMAGE="bht-thesis-texlive:latest"
 
+bash scripts/check-abbreviations.sh
+
 docker build --platform linux/amd64 -t "$IMAGE" -f Dockerfile . >/dev/null
 
 docker run --rm --platform linux/amd64 \
@@ -12,3 +14,5 @@ docker run --rm --platform linux/amd64 \
   -w /workdir \
   "$IMAGE" \
   latexmk -shell-escape -output-directory="./out" -pdf main.tex
+
+bash scripts/check-build-log.sh out/main.log

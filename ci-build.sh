@@ -12,6 +12,8 @@ set -euo pipefail
 
 IMAGE="bht-thesis-texlive:latest"
 
+bash scripts/check-abbreviations.sh
+
 # --cache-{from,to} type=gha persists layers in GitHub's cache backend, so
 # we don't re-pull texlive/texlive (~5 GB) and re-install inkscape on every
 # CI run. mode=max stores intermediate layers too, not just the final one.
@@ -30,3 +32,5 @@ docker run --rm \
   -w /workdir \
   "$IMAGE" \
   latexmk -shell-escape -output-directory="./out" -pdf main.tex
+
+bash scripts/check-build-log.sh out/main.log
