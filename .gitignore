@@ -27,3 +27,4 @@ svg-inkscape/
 # Keep figures and the published reference PDF
 !figures/
 !template.pdf
+.idea
