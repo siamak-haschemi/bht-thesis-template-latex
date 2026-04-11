@@ -17,7 +17,7 @@ The example chapters that ship with this template are not just placeholders — 
 
 ## Contributing back
 
-The template improves whenever a student contributes back. If you find a bug, a typo, or have a workflow improvement, please open a pull request against [`julianbht/bht-thesis-template-latex`](https://github.com/julianbht/bht-thesis-template-latex) so future students benefit. And give the repo a star.
+The template improves whenever a student contributes back. If you find a bug, a typo, or have a workflow improvement, please open a pull request against [`siamak-haschemi/bht-thesis-template-latex`](https://github.com/siamak-haschemi/bht-thesis-template-latex) so future students benefit. And give the repo a star.
 
 ## Building locally
 
