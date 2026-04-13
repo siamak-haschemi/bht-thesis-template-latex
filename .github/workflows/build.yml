@@ -19,16 +19,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+                      /opt/hostedtoolcache/CodeQL
+          docker image prune -af
       - name: Set up Docker buildx
-        # Configures buildx and exports ACTIONS_CACHE_URL /
-        # ACTIONS_RUNTIME_TOKEN so `--cache-{from,to} type=gha` works
-        # inside ci-build.sh.
         uses: docker/setup-buildx-action@v3
-
       - name: Build PDF
         run: ./ci-build.sh
-
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
