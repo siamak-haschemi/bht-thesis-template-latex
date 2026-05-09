@@ -1,0 +1,31 @@
+\chapter*{Einsatz von KI-Werkzeugen}
+\addcontentsline{toc}{chapter}{Einsatz von KI-Werkzeugen}
+\label{chap:ki-einsatz}
+
+Die folgende Übersicht dokumentiert den Einsatz von KI-Werkzeugen in dieser Arbeit. Die Einträge sind als Beispiele zu verstehen -- passe sie an deine tatsächliche Nutzung an und entferne Zeilen für Tools, die du nicht verwendet hast.
+
+% TODO: Einträge anpassen, Zeile löschen wenn Tool nicht genutzt.
+\begin{table}[H]
+    \centering
+    \caption{Eingesetzte KI-Werkzeuge, Zweck und betroffene Stellen.}
+    \label{tab:ki-werkzeuge}
+    \begin{tabularx}{\linewidth}{@{}l X X@{}}
+        \toprule
+        \textbf{Werkzeug} & \textbf{Einsatzzweck} & \textbf{Betroffene Stellen} \\
+        \midrule
+        ChatGPT (GPT-4) & Brainstorming, Strukturierung von Argumentationslinien & Kapitel 1 (Einleitung), Kapitel 3 (Konzeption) \\
+        Claude (Sonnet) & Sprachglättung, Formulierungsvarianten, kritisches Gegenlesen & gesamte Arbeit, insb. Kapitel 2 und 4 \\
+        DeepL / DeepL Write & Übersetzung und stilistische Überarbeitung englischer Passagen & Abstract, Zusammenfassung \\
+        Perplexity & explorative Literaturrecherche (Erstüberblick, Folgequellen) & Kapitel 2 (Grundlagen) \\
+        NotebookLM & Rückfragen an eigene PDF-Quellen, Auffinden konkreter Belegstellen & gesamte Recherchephase \\
+        GitHub Copilot & zeilenweise Code-Vervollständigung in der IDE & Implementierung gesamt (exemplarisch gelistet, i.\,d.\,R. nicht gesondert ausweispflichtig) \\
+        Claude Code (agentisch) & Refactoring der Datenzugriffsschicht, Generierung der Unit-Tests & \path{src/repository/}, \path{tests/repository/} \\
+        Cursor (agentisch) & agentisches Umbauen der UI-Komponenten, Debugging & \path{src/components/dashboard/} \\
+        Midjourney & Generierung illustrativer Titel-/Kapitelgrafiken (kein Fachinhalt) & Titelseite, Kapitelblätter \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{quote}
+\enquote{Ich habe die eingesetzten KI-Werkzeuge im beschriebenen Umfang genutzt und verantworte Auswahl, Übernahme und inhaltliche Korrektheit der Ergebnisse vollumfänglich selbst.}
+\end{quote}
