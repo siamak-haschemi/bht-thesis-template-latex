@@ -44,7 +44,7 @@ MAX MIN US GB MB
 # ---------------------------------------------------------------------------
 # Check 1: every used \gls key is defined
 # ---------------------------------------------------------------------------
-defined_keys=$(grep -oE '\\newacronym\{[^}]+\}' "$ABBR_FILE" \
+defined_keys=$(grep -oE '\\(newacronym|newglossaryentry)\{[^}]+\}' "$ABBR_FILE" \
                | sed 's/.*{\([^}]*\)}.*/\1/' \
                | sort -u)
 
@@ -82,7 +82,10 @@ wl_regex=$(echo $WHITELIST | tr ' ' '|')
 # Strip comments, verbatim-like environments and non-prose macro arguments
 # (\cite, \label, \url, ...), then collect every remaining all-caps token
 # (2+ letters, optional digits/hyphens, e.g. HTTP, UTF-8) as file:line:token.
-candidates=$(awk '
+# LC_ALL=C: process bytes, not multibyte chars — works around a macOS BSD awk
+# bug ("towc: multibyte conversion failure") on UTF-8 input under a *.UTF-8
+# locale. The äöüß byte sequences in the regexes below still match correctly.
+candidates=$(LC_ALL=C awk '
   FNR == 1 { skip = 0; dmath = 0 }   # state must not leak across files
   /\\begin\{(verbatim|lstlisting|minted|filecontents|equation|align|gather|multline|eqnarray|math|displaymath)/ { skip = 1 }
   /\\end\{(verbatim|lstlisting|minted|filecontents|equation|align|gather|multline|eqnarray|math|displaymath)/   { skip = 0; next }
@@ -109,6 +112,12 @@ candidates=$(awk '
     # drop arguments of macros whose content is not prose
     gsub(/\\(no)?[a-zA-Z]*cite[a-zA-Z]*(\[[^]]*\])*\{[^}]*\}/, " ", line)
     gsub(/\\(label|ref|cref|Cref|vref|pageref|nameref|url|hyperref|input|include|includegraphics|includesvg|includepdf|[gG]ls[a-zA-Z]*|bibliography|addbibresource|graphicspath|lstinputlisting|verb)(\[[^]]*\])*\{[^}]*\}/, " ", line)
+    # \texorpdfstring{<typeset>}{<pdf-string>}: the 2nd arg is a plain-text copy
+    # of the heading/caption for the PDF bookmark, not independent prose. The
+    # gls content in the 1st arg has already been stripped just above, so drop
+    # the whole macro to avoid double-counting the fallback text (e.g. the "API"
+    # in \texorpdfstring{\glsentryshort{api}}{API}).
+    gsub(/\\texorpdfstring\{[^{}]*\}\{[^{}]*\}/, " ", line)
     gsub(/\\href\{[^}]*\}/, " ", line)
     gsub(/\\(texttt|lstinline|path|detokenize)\{[^}]*\}/, " ", line)
     gsub(/\\(begin|end)\{[^}]*\}/, " ", line)
