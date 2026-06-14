@@ -13,6 +13,88 @@
 \usepackage{float}      % Improved float placement control (e.g., [H])
 \usepackage{tikz}       % Drawing and diagrams
 
+% Code listings (JS / TS / Java / Kotlin with syntax highlighting)
+
+\usepackage{xcolor}      % colors for listings (load before listings)
+\usepackage{listings}
+
+% Conventional IDE-style palette
+\definecolor{codeKeyword}{RGB}{0,0,200}      % blue   keywords
+\definecolor{codeString} {RGB}{163,21,21}    % brown  strings
+\definecolor{codeComment}{RGB}{0,128,0}      % green  comments
+\definecolor{codeType}   {RGB}{43,145,175}   % teal   types (TS/Kotlin)
+\definecolor{codeNumber} {RGB}{120,120,120}  % gray   line numbers
+\definecolor{codeBg}     {RGB}{248,248,248}  % light background
+
+% --- JavaScript (not bundled with listings) ---
+\lstdefinelanguage{JavaScript}{
+  keywords={break,case,catch,class,const,continue,debugger,default,delete,do,
+    else,export,extends,finally,for,function,if,import,in,instanceof,new,
+    return,super,switch,this,throw,try,typeof,var,void,while,with,yield,let,
+    static,async,await,of,get,set},
+  morekeywords=[2]{true,false,null,undefined,NaN,Infinity},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,            % template literals
+}
+
+% --- TypeScript (extends JavaScript, adds type-level keywords) ---
+\lstdefinelanguage{TypeScript}[]{JavaScript}{
+  morekeywords={interface,type,enum,namespace,declare,implements,private,
+    public,protected,readonly,abstract,as,is,keyof,infer,satisfies,override},
+  morekeywords=[3]{string,number,boolean,any,unknown,never,void,object,
+    bigint,symbol},
+}
+
+% --- Kotlin (not bundled with listings) ---
+\lstdefinelanguage{Kotlin}{
+  keywords={abstract,actual,annotation,as,break,by,catch,class,companion,
+    const,constructor,continue,crossinline,data,delegate,do,dynamic,else,
+    enum,expect,external,false,final,finally,for,fun,get,if,import,in,infix,
+    init,inline,inner,interface,internal,is,lateinit,noinline,null,object,
+    open,operator,out,override,package,private,protected,public,reified,
+    return,sealed,set,super,suspend,tailrec,this,throw,true,try,typealias,
+    typeof,val,var,vararg,when,where,while},
+  morekeywords=[2]{Boolean,Byte,Char,Double,Float,Int,Long,Short,String,Unit,
+    Any,Array,List,Map,Set,Nothing},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+}
+
+% Shared style applied to all listings
+\lstdefinestyle{bhtcode}{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{codeKeyword}\bfseries,
+  keywordstyle=[2]\color{codeType},
+  keywordstyle=[3]\color{codeType},
+  commentstyle=\color{codeComment}\itshape,
+  stringstyle=\color{codeString},
+  numberstyle=\tiny\color{codeNumber},
+  backgroundcolor=\color{codeBg},
+  numbers=left, numbersep=8pt,
+  frame=single, framerule=0pt, rulecolor=\color{codeBg},
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  tabsize=2,
+  columns=fullflexible,
+  upquote=true,
+  captionpos=b,
+  literate=%                       % keep UTF-8 umlauts working inside code
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1,
+}
+\lstset{style=bhtcode}
+
+% Localize the "Listing" caption label for both babel languages
+\addto\captionsenglish{\renewcommand{\lstlistingname}{Listing}}
+\addto\captionsngerman{\renewcommand{\lstlistingname}{Listing}}
+
 % Paragraph indentation
 
 \setlength{\parskip}{0.8em}     % Space between paragraphs

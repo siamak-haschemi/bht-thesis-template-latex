@@ -65,6 +65,45 @@ make svg
 
 Die Nutzung des Scripts ist optional. Natürlich können SVG-Dateien auch manuell über die draw.io Oberfläche exportiert werden. Das Script dient lediglich dazu, Zeit zu sparen und repetitive Arbeitsschritte wie das Navigieren durch die UI und das anschließende Hochladen der Dateien zu vermeiden.
 
+\section{Quelltext mit Syntax-Highlighting}
+\label{sec:listings}
 
+Für Quelltext-Beispiele steht das \texttt{listings}-Paket mit Syntax-Highlighting für JavaScript, TypeScript, Java und Kotlin zur Verfügung. Die Sprache wird über die Option \texttt{language} gewählt, der Stil ist global voreingestellt. \Cref{lst:js,lst:ts,lst:java,lst:kotlin} zeigen je ein Beispiel.
 
+\begin{lstlisting}[language=JavaScript, caption={JavaScript: Begrüßung}, label={lst:js}]
+// Begrüßung als Template-Literal
+function greet(name) {
+  return `Hallo, ${name}!`;
+}
+console.log(greet("Welt"));
+\end{lstlisting}
+
+\begin{lstlisting}[language=TypeScript, caption={TypeScript: typisierte Begrüßung}, label={lst:ts}]
+interface Person {
+  name: string;
+  age: number;
+}
+
+const greet = (p: Person): string => `Hallo, ${p.name}`;
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java, caption={Java: Hauptklasse}, label={lst:java}]
+public class Greeter {
+    // Einstiegspunkt
+    public static void main(String[] args) {
+        String name = "Welt";
+        System.out.println("Hallo, " + name + "!");
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Kotlin, caption={Kotlin: Hauptfunktion}, label={lst:kotlin}]
+// Einstiegspunkt
+fun greet(name: String): String = "Hallo, $name!"
+
+fun main() {
+    val message = greet("Welt")
+    println(message)
+}
+\end{lstlisting}
 
