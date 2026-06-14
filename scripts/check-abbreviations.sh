@@ -17,7 +17,7 @@ if [ ! -f "$ABBR_FILE" ]; then
   exit 0
 fi
 
-defined=$(grep -oE '\\newacronym\{[^}]+\}' "$ABBR_FILE" \
+defined=$(grep -oE '\\(newacronym|newglossaryentry)\{[^}]+\}' "$ABBR_FILE" \
           | sed 's/.*{\([^}]*\)}.*/\1/' \
           | sort -u)
 
